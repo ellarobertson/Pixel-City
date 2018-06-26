@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		490EE35E20E1C4CC006F08D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490EE35D20E1C4CC006F08D5 /* AppDelegate.swift */; };
-		490EE36020E1C4CC006F08D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490EE35F20E1C4CC006F08D5 /* ViewController.swift */; };
+		490EE36020E1C4CC006F08D5 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 490EE35F20E1C4CC006F08D5 /* MapVC.swift */; };
 		490EE36320E1C4CC006F08D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490EE36120E1C4CC006F08D5 /* Main.storyboard */; };
 		490EE36520E1C4CF006F08D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 490EE36420E1C4CF006F08D5 /* Assets.xcassets */; };
 		490EE36820E1C4CF006F08D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 490EE36620E1C4CF006F08D5 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		490EE35A20E1C4CC006F08D5 /* Pixel-City.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pixel-City.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		490EE35D20E1C4CC006F08D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		490EE35F20E1C4CC006F08D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		490EE35F20E1C4CC006F08D5 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		490EE36220E1C4CC006F08D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		490EE36420E1C4CF006F08D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		490EE36720E1C4CF006F08D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,9 +54,11 @@
 		490EE35C20E1C4CC006F08D5 /* Pixel-City */ = {
 			isa = PBXGroup;
 			children = (
-				490EE36F20E1C4F3006F08D5 /* New Group */,
+				490EE37220E1C674006F08D5 /* Controller */,
+				490EE37120E1C66C006F08D5 /* View */,
+				490EE37020E1C665006F08D5 /* Utilities */,
+				490EE36F20E1C4F3006F08D5 /* Extensions */,
 				490EE35D20E1C4CC006F08D5 /* AppDelegate.swift */,
-				490EE35F20E1C4CC006F08D5 /* ViewController.swift */,
 				490EE36120E1C4CC006F08D5 /* Main.storyboard */,
 				490EE36420E1C4CF006F08D5 /* Assets.xcassets */,
 				490EE36620E1C4CF006F08D5 /* LaunchScreen.storyboard */,
@@ -65,11 +67,33 @@
 			path = "Pixel-City";
 			sourceTree = "<group>";
 		};
-		490EE36F20E1C4F3006F08D5 /* New Group */ = {
+		490EE36F20E1C4F3006F08D5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "New Group";
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		490EE37020E1C665006F08D5 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		490EE37120E1C66C006F08D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		490EE37220E1C674006F08D5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				490EE35F20E1C4CC006F08D5 /* MapVC.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,7 +167,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				490EE36020E1C4CC006F08D5 /* ViewController.swift in Sources */,
+				490EE36020E1C4CC006F08D5 /* MapVC.swift in Sources */,
 				490EE35E20E1C4CC006F08D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
