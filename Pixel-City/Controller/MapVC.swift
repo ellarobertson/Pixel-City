@@ -137,6 +137,10 @@ extension MapVC: MKMapViewDelegate {
         removeProgressLbl()
         cancelAllSessions()
         
+        imageUrlArray = []
+        imageArray = []
+        collectionView?.reloadData()
+        
         animateViewUp()
         addSwipe()
         addSpinner()
@@ -157,7 +161,7 @@ extension MapVC: MKMapViewDelegate {
                     if finished {
                         self.removeSpinner()
                         self.removeProgressLbl()
-                        //reload collection view
+                        self.collectionView?.reloadData()
                     }
                 })
             }
@@ -171,29 +175,25 @@ extension MapVC: MKMapViewDelegate {
     }
     
     func retrieveUrls(forAnnotation annotation: DroppablePin, handler: @escaping (_ status: Bool) -> ()) {
-        imageUrlArray = []
-        
         Alamofire.request(flickrURL(forApiKey: apiKey, withAnnotation: annotation, numberOfPhotos: numPhotos)).responseJSON { (response) in
             guard let json = response.result.value as? Dictionary<String, AnyObject> else {return}
             let photosDict = json["photos"] as! Dictionary<String, AnyObject>
             let photosDictArray = photosDict["photo"] as! [Dictionary<String, AnyObject>]
             for photo in photosDictArray {
-                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"])_h_d.jpg"
+                let postUrl = "https://farm\(photo["farm"]!).staticflickr.com/\(photo["server"]!)/\(photo["id"]!)_\(photo["secret"]!)_h_d.jpg"
                 self.imageUrlArray.append(postUrl)
+                debugPrint(postUrl)
             }
             handler(true)
         }
     }
     
     func retrieveImages(handler: @escaping (_ status: Bool) -> ()) {
-        imageArray = []
-        
         for url in imageUrlArray {
             Alamofire.request(url).responseImage { (response) in
                 guard let image = response.result.value else {return}
                 self.imageArray.append(image)
-                self.progressLbl?.text = "\(self.imageArray.count)/\(numPhotos) images downloaded..."
-                
+                self.progressLbl?.text = "\(self.imageArray.count)/\(self.imageUrlArray.count) images downloaded..."
                 if self.imageArray.count == self.imageUrlArray.count {
                     handler(true)
                 }
@@ -235,12 +235,17 @@ extension MapVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return imageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell
-        return cell!
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as? PhotoCell else {return UICollectionViewCell()}
+        let imageFromIndex = imageArray[indexPath.row]
+        let imageView = UIImageView(image: imageFromIndex)
+        cell.addSubview(imageView)
+        return cell
     }
+    
+    
 }
 
