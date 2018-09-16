@@ -6,6 +6,9 @@ Utilizes Apple's MapKit and Flickr's API in order to retrieve users's location a
 
 (from left to right):
 1.) Screen upon opening application
+
 2.) Pin is dropped, and previews of photos uploaded within a certain radius appear
+
 3.) View after preview of photo is clicked on
+
 ![alt text](https://raw.githubusercontent.com/ellarobertson/Pixel-City/master/DemoPhotos/Pixel_City_All_Screens.png)
